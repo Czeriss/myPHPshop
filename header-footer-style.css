@@ -1,0 +1,25 @@
+header {
+
+    width: 100%;
+    border: 5px solid gray;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+footer {
+
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    border-top: 5px solid gray;
+}
+
+.logo {
+
+    height: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;  
+}
+
