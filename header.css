@@ -1,0 +1,64 @@
+html {
+
+    max-height: 138px;
+}
+
+header {
+
+    height: 120px;
+    width: 100%;
+    border: 5px solid gray;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.icon {
+
+    height: 100px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.logo {
+    
+    margin-left: 10px;
+    margin-right: 5em;
+}
+
+.checkout {
+
+    margin-right: 10px;   
+    margin-left: 5em;
+}
+
+input {
+
+    background-color:dimgray;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 25px; 
+    color: white;
+}
+
+input[type="text"] {
+
+    height: 94px;
+    width: 500px;
+    text-align: center;
+    margin-right: 0px;  
+}
+
+input[type="submit"] {
+
+    height: 94px;
+    width: 100px;
+    margin-left: 0px;
+}
+
+input[type="text"]::placeholder {
+
+    color: white;
+}
