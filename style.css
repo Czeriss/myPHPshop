@@ -1,14 +1,13 @@
 html {
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     background: url("https://cdn.pixabay.com/photo/2016/11/21/03/56/landscape-1844226_1280.png") no-repeat center center fixed;
     background-size: cover;
-
 }
 
-
-
 div {
+    
     height: 900px;
 }
 
