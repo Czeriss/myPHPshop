@@ -1,18 +1,18 @@
-html {
-
-    max-height: 138px;
-}
-
 header {
 
+    background-color: white;
+    top: 0%;
+    right: 0%;
     height: 120px;
+    max-height: 138px;
     width: 100%;
     border: 5px solid gray;
+    border-right: 0px;
     position: fixed;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-wrap: nowrap; 
+    justify-content: space-between;   
 }
 
 .icon {
@@ -20,18 +20,6 @@ header {
     height: 100px;
     padding: 5px;
     margin: 5px;
-}
-
-.logo {
-    
-    margin-left: 10px;
-    margin-right: 5em;
-}
-
-.checkout {
-
-    margin-right: 10px;   
-    margin-left: 5em;
 }
 
 input {

@@ -6,15 +6,26 @@
     <title>Book Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <?php 
         include("header.html");
     ?>
-    <div>
 
+    <div>
+    <?php
+        
+        if(isset($_GET["Click"])){
+        
+            $name = $_GET["search"];
+                    echo $name;}
+        
+    ?>
     </div>
     <?php
-        include("footer.html");
+         include("footer.html"); 
     ?>
 </body>
+
+
 </html>
