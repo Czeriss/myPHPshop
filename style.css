@@ -8,11 +8,76 @@ html {
 
 body {
 
-    position: relative;
-    top: 138px;
+    margin: 0;
 }
 
-div{
-    height: 1000px;
+main {
+
+    
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.book {
+
+    width: 25%;
+    height: 25%;
+    background-color: white;
+    border: 5px solid gray;
+    border-radius: 20px;
+    margin:  10px;
+    padding: 5px;
+}
+
+.book_image {
+
+    max-width: 200px;
+    max-height: 600px;
+    font-size: 30px;
+    padding: 5px;
     margin: 10px;
+}
+
+.add_checkout {
+
+    height: 50px;
+    width: 250px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    background-color: grey;
+    border: 5px goldenrod solid;
+    border-radius: 20px;
+}
+
+.little {
+
+    font-size: 20px;
+}
+
+.little::before {
+
+    content: "Author: ";
+}
+
+.inline {
+
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+
+}
+
+.price {
+
+    font-size: 20px;
+    margin: 10px;
+    padding: 5px;
 }

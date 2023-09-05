@@ -2,46 +2,44 @@ header {
 
     background-color: white;
     top: 0%;
-    right: 0%;
-    height: 120px;
-    max-height: 138px;
     width: 100%;
-    border: 5px solid gray;
-    border-right: 0px;
+    border: 5px 0px 5px 5px solid gray;
     position: fixed;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap; 
     justify-content: space-between;   
+    align-items: center;
+
 }
 
 .icon {
 
     height: 100px;
     padding: 5px;
-    margin: 5px;
+    margin: 5px 20px 5px 20px;
 }
 
 input {
 
+    height: 94px;
     background-color:dimgray;
+    padding: 2px;
     margin: 10px;
     border-radius: 10px;
     font-size: 25px; 
     color: white;
+    text-align: center;
 }
 
-input[type="text"] {
+.text_search {
 
-    height: 94px;
     width: 500px;
-    text-align: center;
     margin-right: 0px;  
 }
 
-input[type="submit"] {
+.submit_search {
 
-    height: 94px;
     width: 100px;
     margin-left: 0px;
 }
