@@ -9,11 +9,10 @@
 
 <body>
 
-    <div>
-        <?php 
-            include("header.html");
-        ?>
-    </div>
+    <?php 
+        include("header.html");
+    ?>
+
 
     <main>
 
@@ -80,11 +79,11 @@
     ?>
 
     </main>
-    <div>
-        <?php
-            include("footer.html"); 
-        ?>
-    </div>
+
+    <?php
+        include("footer.html"); 
+    ?>
+
 </body>
 
 
