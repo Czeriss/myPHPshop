@@ -1,29 +1,38 @@
+<?php
+
+    session_start();
+
+    if(empty($_SESSION["checkout"])){
+
+        $_SESSION["checkout"] = array(); 
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Shop</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 
 <body>
-
-    <?php 
-        include("header.html");
-    ?>
-
-
-    <main>
-
+    
     <?php
+        
+        include_once("header.html");
+        
+        echo "<main>";
         
         $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`,  `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` LIMIT 8";
         $db = mysqli_connect("localhost", "root", "", "shop");
 
         $query = mysqli_query($db, $question);
 
-        while($answer =  mysqli_fetch_row($query)){
+        while($answer =  mysqli_fetch_row($query)) {
 
             echo "
             
@@ -35,8 +44,8 @@
                     <p class=\"little\"> {$answer[3]} </p>
                     
             ";
-
-            if($answer[5] > 0){
+            
+            if($answer[5] > 0) {
 
                 echo "
                 
@@ -44,27 +53,28 @@
                     
                         <span class=\"price\"> {$answer[4]}$ </span>
 
-                        <form action=\"index.php\" method=\"post\">
+                        <form method=\"post\">
 
-                            <button type=\"submit\" value=\"{$answer[0]}\" name=\"checkout\" class=\"add_checkout\" > Add product to checkout </button>
+                            <button type=\"submit\" value=\"{$answer[0]}\" name=\"checkout\" class=\"add_checkout\"> Add product to checkout </button>
 
                         </form>
 
                     </div>
                 ";
             }
-
-            else{
+            else {
                 
                 echo "<p class=\"no_product\"> This product is no available </p>";
             }
             
             echo "</div>";
         }
-
+        
         if(isset($_POST["checkout"])){
 
             hi($_POST["checkout"]);
+
+            array_push($_SESSION["checkout"], $_POST["checkout"]);
         }
         
         function hi($value){
@@ -76,15 +86,13 @@
         }
 
         
-    ?>
 
-    </main>
+    echo "</main>";
 
-    <?php
-        include("footer.html"); 
+        include("footer.html");
+        
     ?>
 
 </body>
-
 
 </html>

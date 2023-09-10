@@ -8,18 +8,27 @@ html {
 
 body {
 
-    position: relative;
-    top: 138px;
+    margin: 0;
 }
 
 main {
 
-    
+    margin-top: 140px;
+    position: static;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+@media (max-width: 1050px) {
+
+    main {
+
+        margin-top: 280px;
+    }
+    
 }
 
 .book {
@@ -82,3 +91,82 @@ main {
     margin: 10px;
     padding: 5px;
 }
+
+.price::after {
+    
+    content: "$";
+}
+
+.book_chekout {
+
+    width: 800px;
+    height: 400px;
+    background-color: white;
+    border: 5px solid gray;
+    border-radius: 20px;
+    margin:  10px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 250px 550px;
+    grid-template-rows: 100px 300px;
+}
+
+
+.picture {
+
+    grid-row: 1 / 3;
+}
+
+.book_image_checkout {
+
+    width: 200px;
+    height: 350px;
+    margin: 25px;
+}
+
+.header_checkout {
+
+    width: 550px;
+    height: 100px;
+    display: flex;
+}
+
+.title {
+
+    width: 400px;
+    height: 50px;
+    padding: 10px;
+    margin: 15px;
+    text-align: center;
+}
+
+.delate_button {
+
+    padding: 0;
+    margin: 25px;
+    width: 50px;
+    height: 50px;
+}
+
+.delate_icon {
+
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+
+
+.text {
+
+    grid-column: 2;
+    display: flex;
+    
+}
+
+.little_checkout {
+
+    width: 500px;
+    height: 50px;
+    margin: 10px 0px;
+}
+

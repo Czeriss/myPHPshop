@@ -3,11 +3,11 @@ header {
     background-color: white;
     top: 0%;
     width: 100%;
-    border: 5px 0px 5px 5px solid gray;
+    border: 5px solid gray;
     position: fixed;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; 
+    flex-wrap: nowrap;
     justify-content: space-between;   
     align-items: center;
 
