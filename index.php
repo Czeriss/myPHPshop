@@ -4,8 +4,10 @@
 
     if(empty($_SESSION["checkout"])){
 
-        $_SESSION["checkout"] = array(); 
+        $_SESSION["checkout"] = array();
     }
+    
+    include "class.book.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,19 +17,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Shop</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-
 <body>
-    
-    <?php
+
+    <header>
+
+        <?php include_once 'header.php'; ?>
+
+    </header>
         
-        include_once("header.html");
-        
-        echo "<main>";
-        
-        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`,  `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` LIMIT 8";
+       <main>
+
+        <?php
+
+        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` LIMIT 8";
         $db = mysqli_connect("localhost", "root", "", "shop");
 
         $query = mysqli_query($db, $question);
@@ -51,7 +56,7 @@
                 
                     <div class=\"inline\">
                     
-                        <span class=\"price\"> {$answer[4]}$ </span>
+                        <span class=\"price\"> {$answer[4]} </span>
 
                         <form method=\"post\">
 
@@ -79,20 +84,19 @@
         
         function hi($value){
 
-            echo "<script>
-                alert(\"You add somethig to checkout {$value}\");
-                </script>
-            ";
+            echo $value;
         }
 
-        
+        ?>
 
-    echo "</main>";
+    </main>
 
-        include("footer.html");
-        
-    ?>
+       
+    <footer>
+
+        <?php include_once 'footer.php'; ?>
+
+    </footer>
 
 </body>
-
 </html>

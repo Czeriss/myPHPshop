@@ -2,25 +2,30 @@
 
     session_start();
 
+    include "class.book.php";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 
-    <?php
+    <header>
 
-        include("header.html");
+        <?php include_once 'header.php'; ?>
 
+    </header>
 
-    echo "<main>";
+    <main>
 
+<?php
     $db = mysqli_connect("localhost", "root", "", "shop");
 
     $checkoutProduct = array_unique($_SESSION["checkout"]);
@@ -63,12 +68,15 @@
     ";
     
     }
-
-    echo "</main>";
-   
-        include("footer.html");
-
     ?>
+    
+    </main>
+  
+    <footer>
+
+        <?php include_once 'footer.php'; ?>
+
+    </footer>
 
 </body>
 </html>

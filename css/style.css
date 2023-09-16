@@ -11,10 +11,17 @@ body {
     margin: 0;
 }
 
+header {
+    
+    background-color: RGB(223, 207, 190);
+    border-bottom: 5px solid gray;
+    position: sticky;
+    top: 0;
+}
+
 main {
 
-    margin-top: 140px;
-    position: static;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -22,18 +29,9 @@ main {
     text-align: center;
 }
 
-@media (max-width: 1050px) {
-
-    main {
-
-        margin-top: 280px;
-    }
-    
-}
-
 .book {
 
-    width: 25%;
+    width: 15%;
     height: 25%;
     background-color: white;
     border: 5px solid gray;

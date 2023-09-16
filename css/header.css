@@ -1,28 +1,30 @@
-header {
+header nav {
 
-    background-color: white;
-    top: 0%;
-    width: 100%;
-    border: 5px solid gray;
-    position: fixed;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;   
     align-items: center;
-
 }
+
 
 .icon {
 
     height: 100px;
     padding: 5px;
-    margin: 5px 20px 5px 20px;
+    margin-right: 20px;
+}
+
+h1 {
+
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    margin-left: 20px;
 }
 
 input {
 
-    height: 94px;
+    height: 75px;
     background-color:dimgray;
     padding: 2px;
     margin: 10px;
