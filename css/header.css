@@ -22,7 +22,7 @@ h1 {
     margin-left: 20px;
 }
 
-input {
+.search {
 
     height: 75px;
     background-color:dimgray;
@@ -32,18 +32,19 @@ input {
     font-size: 25px; 
     color: white;
     text-align: center;
+    box-shadow: 1px 1px 10px 5px black;
 }
 
 .text_search {
 
     width: 500px;
-    margin-right: 0px;  
+    margin-right: 5px;  
 }
 
 .submit_search {
 
     width: 100px;
-    margin-left: 0px;
+    margin-left: 5px;
 }
 
 input[type="text"]::placeholder {

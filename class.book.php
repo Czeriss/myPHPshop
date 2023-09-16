@@ -2,14 +2,13 @@
 
 class Book {
 
-    public $bookID;
-    public $bookName;
-    public $bookCategoryName;
-    public $bookAuthor;
-    public $bookprice;
-    public $booksNumber;
-    public $bookImgName;
-    public $bookAvailable;
+    private $bookID;
+    private $bookName;
+    private $bookCategoryName;
+    private $bookAuthor;
+    private $bookprice;
+    private $booksNumber;
+    private  $bookImgName;
 
     public function __construct($ID, $name, $categoryName, $author, $price, $number, $imgName) {
 
@@ -56,24 +55,24 @@ class Book {
             
             <section class=\"book\">
 
-                <h3> {} </h3>
-                <h3> {} </h3>
-                <img src = \"image\\{}\" alt=\"{}\" class=\"book_image\">
-                <p class=\"little\"> {} </p>
+                <h3> {$this -> getBookName()} </h3>
+                <h3> {$this -> getBookCategoryName()} </h3>
+                <img src = \"image\\{$this -> getBookNameImg()}\" alt=\"{$this -> getBookName()}\" class=\"book_image\">
+                <p class=\"little\"> {$this -> getBookAuthor()} </p>
                 
         ";
 
-        if($this -> booksNumber > 0){
+        if($this -> getBooksNumber() > 0){
 
             echo "
                 
                 <div class=\"inline\">
                 
-                    <span class=\"price\"> {} </span>
+                    <span class=\"price\"> {$this -> getBookPirce()} </span>
 
                     <form method=\"post\">
 
-                        <button value=\"{}\" name=\"checkout\" class=\"add_checkout\">Add product to checkout</button>
+                        <button type=\"submit\" value=\"{$this -> getID()}\" name=\"checkout\" class=\"add_checkout\">Add product to checkout</button>
 
                     </form>
 
@@ -94,6 +93,37 @@ class Book {
         }
     }
 
+    public function bulidCheckoutSection() {
+
+        echo "
+            
+            <section class=\"book_chekout\">
+
+                <div class=\"picture\">
+                
+                    <img src = \"image\\{$this -> getBookNameImg()}\" alt=\"{$this -> getBookName()}\" class=\"book_image_checkout\">
+                
+                </div>
+
+                <div class=\"header_checkout\">
+
+                    <h3 class=\"title\"> {$this -> getBookName()} </h3>
+                    <button type=\"button\" value=\"{$this -> getID()}\" onClick=\"delate()\" class=\"delate_button\"> <img src=\"https://cdn.pixabay.com/photo/2014/03/24/13/41/trashcan-293989_1280.png\" alt=\"Delete\" class=\"delate_icon\"> </button>
+                
+                </div>
+
+
+                <div class=\"text\">
+
+                    <span class=\"little_checkout\"> {$this -> getBookCategoryName()} </span>
+                    <span class=\"little_checkout\"> {$this -> getBookAuthor()} </span>
+                    <span class=\"price\">{$this -> getBookPirce()}</span>
+
+                </div>
+
+            </section>
+        ";
+    }
 
 }
 
