@@ -6,7 +6,7 @@
 
         $_SESSION["checkout"] = array();
     }
-    
+
     include "class.book.php";
 ?>
 
@@ -23,68 +23,30 @@
 <body>
 
     <header>
-
         <?php include_once 'header.php'; ?>
-
     </header>
         
-       <main>
+    <main>
 
         <?php
 
-        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` LIMIT 8";
+        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC LIMIT 8";
         $db = mysqli_connect("localhost", "root", "", "shop");
-
         $query = mysqli_query($db, $question);
+
+        $i = 0;
 
         while($answer =  mysqli_fetch_row($query)) {
 
-            echo "
-            
-                <div class=\"book\">
-
-                    <h3> {$answer[1]} </h3>
-                    <h3> {$answer[2]} </h3>
-                    <img src = \"image\\{$answer[6]}\" alt=\"{$answer[1]}\" class=\"book_image\">
-                    <p class=\"little\"> {$answer[3]} </p>
-                    
-            ";
-            
-            if($answer[5] > 0) {
-
-                echo "
-                
-                    <div class=\"inline\">
-                    
-                        <span class=\"price\"> {$answer[4]} </span>
-
-                        <form method=\"post\">
-
-                            <button type=\"submit\" value=\"{$answer[0]}\" name=\"checkout\" class=\"add_checkout\"> Add product to checkout </button>
-
-                        </form>
-
-                    </div>
-                ";
-            }
-            else {
-                
-                echo "<p class=\"no_product\"> This product is no available </p>";
-            }
-            
-            echo "</div>";
+            $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
+            $book -> bulidBookSection();
         }
-        
+
+        mysqli_close($db);
+
         if(isset($_POST["checkout"])){
 
-            hi($_POST["checkout"]);
-
             array_push($_SESSION["checkout"], $_POST["checkout"]);
-        }
-        
-        function hi($value){
-
-            echo $value;
         }
 
         ?>
@@ -93,9 +55,7 @@
 
        
     <footer>
-
         <?php include_once 'footer.php'; ?>
-
     </footer>
 
 </body>

@@ -12,64 +12,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 <body>
 
     <header>
-
         <?php include_once 'header.php'; ?>
-
     </header>
 
     <main>
 
-<?php
-    $db = mysqli_connect("localhost", "root", "", "shop");
+        <?php
+        $db = mysqli_connect("localhost", "root", "", "shop");
 
-    $checkoutProduct = array_unique($_SESSION["checkout"]);
+        $checkoutProduct = array_unique($_SESSION["checkout"]);
 
-    foreach ($checkoutProduct as $product) {
-    
-
-        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`,  `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` WHERE `books`.`ID` = {$product}";
+        foreach ($checkoutProduct as $product) {
         
-        $query = mysqli_query($db, $question);
 
-        $answer =  mysqli_fetch_row($query);
-        echo "
+            $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`,  `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` WHERE `books`.`ID` = {$product}";
             
-        <section class=\"book_chekout\">
+            $query = mysqli_query($db, $question);
 
-            <div class=\"picture\">
+            $answer =  mysqli_fetch_row($query);
 
-                <img src = \"image\\{$answer[6]}\" alt=\"{$answer[1]}\" class=\"book_image_checkout\">
-            
-            </div>
-            
-            <div class=\"header_checkout\">
+            $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
 
-                <h3 class=\"title\"> {$answer[1]} </h3>
-                <button type=\"button\" value=\"{$answer[0]}\" onClick=\"delate()\" class=\"delate_button\"> <img src=\"https://cdn.pixabay.com/photo/2014/03/24/13/41/trashcan-293989_1280.png\" alt=\"Delete\" class=\"delate_icon\"> </button>
-                
-            </div> 
-
-            <div class=\"text\">
-
-                <span class=\"little_checkout\"> {$answer[2]} </span>
-                <p class=\"little_checkout\"> {$answer[3]} </p>
-                <span class=\"price\">{$answer[4]}</span>
-            
-            </div>
-
-        </section>
-            
-    ";
-    
-    }
-    ?>
-    
+            $book -> bulidCheckoutSection();
+        
+        }
+        ?>
     </main>
   
     <footer>

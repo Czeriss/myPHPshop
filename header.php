@@ -13,8 +13,8 @@
             
             <form action="index.php" method="get" class="form_search">
                 
-                <input type="text" name="search" placeholder="Write here anything what you are looking" maxlength="100" class="text_search">
-                <input type="submit" value="Search" name="Click" class="submit_search"> 
+                <input type="text" name="search" placeholder="Write here anything what you are looking" maxlength="100" class="search text_search">
+                <input type="submit" value="Search" name="Click" class="search submit_search"> 
                 
             </form>
             
