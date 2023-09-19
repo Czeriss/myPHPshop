@@ -1,13 +1,10 @@
 <?php
-
     session_start();
 
-    if(empty($_SESSION["checkout"])){
-
+    if(empty($_SESSION["checkout"]))
         $_SESSION["checkout"] = array();
-    }
-
-    include "class.book.php";
+    
+    include("class.book.php");
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +20,7 @@
 <body>
 
     <header>
-        <?php include_once 'header.php'; ?>
+        <?php include_once("header.php"); ?>
     </header>
         
     <main>
@@ -34,8 +31,6 @@
         $db = mysqli_connect("localhost", "root", "", "shop");
         $query = mysqli_query($db, $question);
 
-        $i = 0;
-
         while($answer =  mysqli_fetch_row($query)) {
 
             $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
@@ -44,18 +39,16 @@
 
         mysqli_close($db);
 
-        if(isset($_POST["checkout"])){
-
+        if(isset($_POST["checkout"]))
             array_push($_SESSION["checkout"], $_POST["checkout"]);
-        }
-
+        
         ?>
 
     </main>
 
        
     <footer>
-        <?php include_once 'footer.php'; ?>
+        <?php include_once("footer.php"); ?>
     </footer>
 
 </body>

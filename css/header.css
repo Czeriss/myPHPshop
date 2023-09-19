@@ -7,6 +7,28 @@ header nav {
     align-items: center;
 }
 
+a {
+
+    color: inherit;
+}
+
+a:link {
+
+    transition: all 0.5s linear;
+    text-decoration: none;
+}
+   
+a:hover {
+
+    font-size: 150%;
+    transition: all 0.5s linear;
+    text-decoration: underline;
+}
+
+a:active {
+
+    color: blue;
+}
 
 .icon {
 

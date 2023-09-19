@@ -84,12 +84,12 @@ class Book {
 
         else {
 
-            echo "
+            echo '
 
-                <p class=\"no_product\">This product is no available</p>
+                <p class="no_product">This product is no available</p>
 
             </section>
-            ";
+            ';
         }
     }
 
@@ -108,8 +108,11 @@ class Book {
                 <div class=\"header_checkout\">
 
                     <h3 class=\"title\"> {$this -> getBookName()} </h3>
-                    <button type=\"button\" value=\"{$this -> getID()}\" onClick=\"delate()\" class=\"delate_button\"> <img src=\"https://cdn.pixabay.com/photo/2014/03/24/13/41/trashcan-293989_1280.png\" alt=\"Delete\" class=\"delate_icon\"> </button>
-                
+
+                    <form method=\"post\">
+                        <button type=\"submit\" value=\"{$this -> getID()}\" name=\"delete\" class=\"delete_button\"> <img src=\"https://cdn.pixabay.com/photo/2014/03/24/13/41/trashcan-293989_1280.png\" alt=\"Delete\" class=\"delete_icon\"> </button>
+                    </form>
+
                 </div>
 
 

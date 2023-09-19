@@ -9,7 +9,7 @@
 
         <nav>
 
-            <h1>BookShop</h1>
+            <a href="http://localhost/web/" class="main_site"><h1>BookShop</h1></a>
             
             <form action="index.php" method="get" class="form_search">
                 
