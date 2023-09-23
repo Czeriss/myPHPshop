@@ -8,8 +8,8 @@ main {
 
     min-width: 400px;
     min-height: 300px;
-    width: 40vw;
-    height: 40vh;
+    width: 30vw;
+    height: 30vh;
     background-color: white;
     border: 5px solid gray;
     border-radius: 20px;
@@ -39,9 +39,10 @@ main {
 
 .title {
 
+    margin: 0;
+    margin-top: 5px;
     width: 75%;
     padding: 5px;
-    margin: 5px;
     text-align: center;
 }
 
@@ -64,11 +65,15 @@ main {
 
     grid-column: 2;
     display: flex;
-    
+    flex-direction: column;
+    justify-content: space-evenly;
+    justify-self: start;
 }
 
 .little_checkout {
 
+    font-size: 25px;
+    border-bottom: 5px solid goldenrod;
     height: 50px;
     margin: 10px;
 }
@@ -78,14 +83,64 @@ main {
     font-size: 300%;
     text-decoration: underline;
     text-align: center;
+    align-items: center;
 }
 
 .product {
 
+    height: 75vh;
+    overflow-y: auto;
 }
 
 .checkout_form {
 
-    border: 2px solid white;
-    border-radius: 3px;
+    border: 10px solid lightgrey;
+    border-radius: 5px;
+    height: 75vh;
+}
+
+.checkout_form form {
+
+    margin: 20px;
+}
+
+.checkout_form label, .checkout_form input {
+
+    font-size: 30px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.checkout_form label:hover {
+
+    transition: all .2s linear;
+    text-decoration: underline;
+    color: bisque;
+}
+
+.checkout_form input[type="submit"] {
+
+    border: 2px solid goldenrod;
+    border-radius: 5px;
+    font-size: 25px;
+    width: 200px;
+    height: 50px;
+}
+
+.checkout_form input[type="submit"]:hover {
+
+    transition: all .2s linear;
+    box-shadow: 0px 0px 20px black;
+}
+
+label::before {
+    content: "*";
+    color: red;
+}
+
+.order_complete {
+
+    font-size: 300%;
+    text-align: center;
+    align-items: center;
 }
