@@ -27,26 +27,25 @@
 
         <?php
 
-        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC LIMIT 8";
-        $db = mysqli_connect("localhost", "root", "", "shop");
-        $query = mysqli_query($db, $question);
+            $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC";
+            $db = mysqli_connect("localhost", "root", "", "shop");
+            $query = mysqli_query($db, $question);
 
-        while($answer =  mysqli_fetch_row($query)) {
+            while($answer =  mysqli_fetch_row($query)) {
 
-            $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
-            $book -> bulidBookSection();
-        }
+                $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
+                $book -> bulidBookSection();
+            }
 
-        mysqli_close($db);
+            mysqli_close($db);
 
-        if(isset($_POST["checkout"]))
-            array_push($_SESSION["checkout"], $_POST["checkout"]);
-        
+            if(isset($_POST["checkout"]))
+                array_push($_SESSION["checkout"], $_POST["checkout"]);
+            
         ?>
 
     </main>
-
-       
+    
     <footer>
         <?php include_once("footer.php"); ?>
     </footer>

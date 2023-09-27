@@ -144,7 +144,7 @@
 
                     </script>
 
-                <?php 
+                <?php
                 
                 echo "<h2 class=\"order_complete\"> Your order is complete. Thank for ordered something in my shop!</h2>";
 

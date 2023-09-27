@@ -1,7 +1,10 @@
 <?php
-
     session_start();
 
+    if(empty($_SESSION["checkout"]))
+        $_SESSION["checkout"] = array();
+    
+    include("class.book.php");
 ?>
 
 <!DOCTYPE html>
@@ -11,105 +14,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Shop</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
-
 <body>
     
-
+    <header>
+        <?php include_once("header.php"); ?>
+    </header>
         
-<header>
+    <main>
 
-<link rel="stylesheet" href="header.css">
+        <?php
 
-<nav>
+            $db = mysqli_connect("localhost", "root", "", "shop");
 
-    <img src="https://cdn.pixabay.com/photo/2013/07/12/18/36/pencil-153561_1280.png" alt="There should be my logo" class="icon" title="This is my logo">
-    
-    <form action="index.php" method="get" class="form_search">
-        
-        <input type="text" name="search" placeholder="Write here anything what you are looking" maxlength="100" class="text_search">
-        <input type="submit" value="Search" name="Click" class="submit_search"> 
-        
-    </form>
-    
-    <a href="checkout.php"><img src="https://cdn.pixabay.com/photo/2021/11/05/00/19/shopping-6769726_1280.png" alt="checkout" class="icon"></a>
-    
-</nav>
+            if(isset($_GET["search_click"])){
 
-</header>
-        
-        <main>
-           <?php
-        $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`,  `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` LIMIT 8";
-        $db = mysqli_connect("localhost", "root", "", "shop");
+                $search = filter_var($_GET["search"], FILTER_SANITIZE_STRING);
+                $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` WHERE `books`.`Name` LIKE \"%$search%\" OR `categoty`.`Name` LIKE \"%$search%\" OR `Author` LIKE \"%$search%\" ORDER BY `books`.`ID` ASC";
+                $query = mysqli_query($db, $question);
 
-        $query = mysqli_query($db, $question);
+                if($query -> num_rows){
 
-        while($answer =  mysqli_fetch_row($query)) {
+                    while($answer =  mysqli_fetch_row($query)) {
 
-            echo "
-            
-                <div class=\"book\">
-
-                    <h3> {$answer[1]} </h3>
-                    <h3> {$answer[2]} </h3>
-                    <img src = \"image\\{$answer[6]}\" alt=\"{$answer[1]}\" class=\"book_image\">
-                    <p class=\"little\"> {$answer[3]} </p>
+                        $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
+                        $book -> bulidBookSection();
+                    }
                     
-            ";
-            
-            if($answer[5] > 0) {
-
-                echo "
+                    return;
+                }
                 
-                    <div class=\"inline\">
-                    
-                        <span class=\"price\"> {$answer[4]}$ </span>
+                $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC";
+                $query = mysqli_query($db, $question);
 
-                        <form method=\"post\">
+                while($answer =  mysqli_fetch_row($query)) {
 
-                            <button type=\"submit\" value=\"{$answer[0]}\" name=\"checkout\" class=\"add_checkout\"> Add product to checkout </button>
-
-                        </form>
-
-                    </div>
-                ";
+                    $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
+                    $book -> bulidBookSection();
+                }
             }
-            else {
-                
-                echo '<p class="no_product"> This product is no available </p>';
-            }
-            
-            echo "</div>";
-        }
-        
-        if(isset($_POST["checkout"])){
 
-            hi($_POST["checkout"]);
+            mysqli_close($db);
 
-            array_push($_SESSION["checkout"], $_POST["checkout"]);
-        }
-        
-        function hi($value){
+        ?>
 
-            echo "<script>
-                alert(\"You add somethig to checkout {$value}\");
-                </script>
-            ";
-        }
-
-        
-
-    echo "</main>";
-
-        include("footer.html");
-        
-        foreach ($_SESSION["checkout"] as $x)
-            echo $x;
-    ?>
+    </main>
+    
+    <footer>
+        <?php include_once("footer.php"); ?>
+    </footer>
 
 </body>
-
 </html>
