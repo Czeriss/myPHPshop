@@ -4,6 +4,12 @@ main {
     grid-template-columns: 50vw 50vw;
 }
 
+.products {
+
+    height: 75vh;
+    overflow-y: auto;
+}
+
 .book_chekout {
 
     min-width: 400px;
@@ -35,6 +41,7 @@ main {
 .header_checkout {
 
     display: flex;
+    justify-content: center;
 }
 
 .title {
@@ -86,12 +93,6 @@ main {
     align-items: center;
 }
 
-.product {
-
-    height: 75vh;
-    overflow-y: auto;
-}
-
 .checkout_form {
 
     border: 10px solid lightgrey;
@@ -134,6 +135,7 @@ main {
 }
 
 label::before {
+
     content: "*";
     color: red;
 }

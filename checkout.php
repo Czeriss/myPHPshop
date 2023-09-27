@@ -34,7 +34,7 @@
 
                     <main>
 
-                    <article class="product">';
+                    <article class="products">';
 
                 $checkoutProduct = array_unique($_SESSION["checkout"]);
 

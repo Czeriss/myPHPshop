@@ -18,7 +18,7 @@
 
 </head>
 <body>
-    
+
     <header>
         <?php include_once("header.php"); ?>
     </header>
@@ -29,34 +29,50 @@
 
             $db = mysqli_connect("localhost", "root", "", "shop");
 
-            if(isset($_GET["search_click"])){
+            if(isset($_GET["search_click"])) {
 
                 $search = filter_var($_GET["search"], FILTER_SANITIZE_STRING);
                 $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` WHERE `books`.`Name` LIKE \"%$search%\" OR `categoty`.`Name` LIKE \"%$search%\" OR `Author` LIKE \"%$search%\" ORDER BY `books`.`ID` ASC";
                 $query = mysqli_query($db, $question);
 
-                if($query -> num_rows){
+                if($query -> num_rows > 0){
 
                     while($answer =  mysqli_fetch_row($query)) {
 
-                        $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
-                        $book -> bulidBookSection();
+                        bulidSection($answer);
                     }
-                    
-                    return;
                 }
-                
-                $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC";
-                $query = mysqli_query($db, $question);
 
-                while($answer =  mysqli_fetch_row($query)) {
+                else {
 
-                    $book = new Book($answer[0], $answer[1], $answer[2], $answer[3], $answer[4], $answer[5], $answer[6]);
-                    $book -> bulidBookSection();
+                    SelectAll($db);
                 }
             }
 
+            else {
+                
+                SelectAll($db);
+            }
+
             mysqli_close($db);
+
+
+            function SelectAll($database) {
+
+                $question = "SELECT `books`.`ID`, `books`.`Name`, `categoty`.`Name`, `Author`, `Price`, `Number`, `Img_Name` FROM `books` INNER JOIN `categoty` ON `Category` = `categoty`.`ID` ORDER BY `books`.`ID` ASC";
+                $query = mysqli_query($database, $question);
+    
+                while($answer =  mysqli_fetch_row($query)) {
+    
+                    bulidSection($answer);
+                }
+            }
+
+            function bulidSection($array) {
+
+                $book = new Book($array[0], $array[1], $array[2], $array[3], $array[4], $array[5], $array[6]);
+                $book -> bulidBookSection();
+            }
 
         ?>
 

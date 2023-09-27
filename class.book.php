@@ -115,7 +115,6 @@ class Book {
 
                 </div>
 
-
                 <div class=\"text\">
 
                     <span class=\"little_checkout\"> {$this -> getBookCategoryName()} </span>
